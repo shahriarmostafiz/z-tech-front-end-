@@ -10,7 +10,19 @@ const AddProduct = () => {
         const price = form.price.value
         const img = form.img.value
         const details = form.details.value
-        console.log(name, brand, type, rating, price, img, details);
+        const product = { name, brand, type, rating, price, img, details }
+        fetch('http://localhost:5000/products', {
+            method: 'POST',
+            headers: {
+                "content-type": 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+
     }
     return (
         <div>
