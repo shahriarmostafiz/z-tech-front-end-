@@ -1,7 +1,32 @@
+import { useContext } from 'react';
 import { GrTechnology } from 'react-icons/gr';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
+const toastInfo = {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+}
 // GrTechnology
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        // console.log('logging out soon');
+        logOut()
+            .then(() => {
+                return toast.error('logged out', toastInfo)
+            })
+            .catch(err => {
+                return toast.error('something went wrong', err.message)
+            })
+
+    }
     const links = <>
         <NavLink className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "border-b-2 pb-1 border-b-red-950 w-fit" : ""
@@ -20,6 +45,7 @@ const Navbar = () => {
             <h1 className='text-white'><GrTechnology ></GrTechnology></h1>
         </div>
     </div>
+
     return (
         <div className='flex justify-between items-center lg:max-w-7xl lg:mx-auto py-4'>
 
@@ -41,9 +67,34 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <NavLink className={({ isActive, isPending }) =>
+                    <div>
+                        {user ? <div className='flex gap-1 md:gap-2 items-center justify-center'>
+                            <div className='w-fit'>
+                                {<img src={user.photoURL} className='rounded w-5 md:w-8' alt="userImage" />}
+                            </div>
+                            <p className='text-gray-500 bg-rose-50 p-1  rounded md:text-base'>
+                                {user.displayName}
+                            </p>
+                            <div>
+                                <button
+                                    className='btn btn-xs md:btn-sm btn-outline btn-error'
+                                    onClick={handleLogOut}>Log Out
+                                </button>
+                            </div>
+                        </div>
+                            : <div className='flex gap-1 md:gap-2'>
+                                <Link to={'/login'}>
+                                    <button className='btn btn-outline btn-error btn-xs md:btn-sm md:px-6'> Login </button>
+                                </Link>
+                                <Link to={'/signup'}>
+                                    <button className='btn  btn-outline btn-error btn-xs md:btn-sm md:px-4'> Register </button>
+                                </Link>
+                            </div>
+                        }
+                    </div>
+                    {/* <NavLink className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "border-b-2 pb-1 border-b-red-950 w-fit" : ""
-                    } to={'/login'}><li className='text-cyan-800 list-none btn '>Login</li></NavLink>
+                    } to={'/login'}><li className='text-cyan-800 list-none  '>Login</li></NavLink> */}
                     {/* <a className="btn">Button</a> */}
                 </div>
             </div>

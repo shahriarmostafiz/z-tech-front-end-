@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
 
     }
-    const AuthValue = { user, signUp, login, updateData, logOut }
+    const AuthValue = { user, loading, signUp, login, updateData, logOut }
     return (
         <AuthContext.Provider value={AuthValue} >
             {children}

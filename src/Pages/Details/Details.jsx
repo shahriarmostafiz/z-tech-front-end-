@@ -6,7 +6,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Details = () => {
     const { user } = useContext(AuthContext)
-    const userEmail = user?.email
+    const email = user?.email
     const data = useLoaderData()
     const { _id, name, details, brand, type, rating, price, img } = data
     const [thisRating, setRating] = useState(0)
@@ -15,8 +15,21 @@ const Details = () => {
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     }
-    const handleAddToCart = id => {
-        fetch()
+    const cartData = { email, data }
+    const handleAddToCart = () => {
+        console.log(cartData);
+        fetch(`http://localhost:5000/carts`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(cartData)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
     // console.log(data);
     return (
@@ -35,11 +48,11 @@ const Details = () => {
                     <Rating style={{ maxWidth: 150 }} value={rating} onChange={setRating} itemStyles={myStyles} readOnly />
                 </div>
                 <p className="text-xl font-medium">Price: ${price}</p>
-                <Link>
-                    <button
-                        onClick={() => handleAddToCart(_id)}
-                        className="btn btn-error btn-outline"> Add to cart </button>
-                </Link>
+
+                <button
+                    onClick={handleAddToCart}
+                    className="btn btn-error btn-outline"> Add to cart </button>
+
             </div>
         </div>
     );
