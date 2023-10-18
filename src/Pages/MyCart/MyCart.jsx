@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import CartItem from "./CartItem";
 
 const MyCart = () => {
     const { user } = useContext(AuthContext)
@@ -18,7 +19,7 @@ const MyCart = () => {
     // console.log(email);
     return (
         <div>
-            myCart
+            {cart?.map(cartItem => <CartItem key={cartItem._id} cart={cart} setCart={setCart} cartItem={cartItem}></CartItem>)}
         </div>
     );
 };

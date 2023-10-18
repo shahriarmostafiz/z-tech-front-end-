@@ -30,8 +30,8 @@ const Login = () => {
         login(email, password)
             .then(res => {
                 console.log(res.user)
-                return toast.success('logged in', toastInfo)
-                // navigate(location?.state ? location.state : "/")
+                toast.success('logged in', toastInfo)
+                navigate(location?.state ? location.state : "/")
             })
             .catch(err => {
                 console.log(err)
