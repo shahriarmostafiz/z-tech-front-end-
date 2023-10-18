@@ -7,6 +7,7 @@ import Register from '../Pages/Register/Register';
 import AddProduct from '../Pages/AddProduct/AddProduct';
 import MyCart from '../Pages/MyCart/MyCart';
 import Products from '../Pages/Products/Products';
+import Details from '../Pages/Details/Details';
 
 const MainRouter = createBrowserRouter([
     {
@@ -32,7 +33,11 @@ const MainRouter = createBrowserRouter([
         }, {
             path: "/products/:brand",
             element: <Products></Products>,
-            loader: ({ params }) => fetch(`http://localhost:5000/products/${params.brand.toLocaleLowerCase()}`)
+            loader: ({ params }) => fetch(`http://localhost:5000/products/${params.brand}`)
+        }, {
+            path: "/details/:id",
+            element: <Details></Details>,
+            loader: ({ params }) => fetch(`http://localhost:5000/products/details/${params.id}`)
         }
         ]
     }

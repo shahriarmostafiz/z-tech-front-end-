@@ -2,9 +2,10 @@ import PropTypes from "prop-types"
 import { useState } from 'react';
 import { Rating, Star } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-    const { name, brand, type, rating, price, img, } = product
+    const { _id, name, brand, type, rating, price, img } = product
     const [thisRating, setRating] = useState(0)
     const myStyles = {
         itemShapes: Star,
@@ -37,8 +38,16 @@ const ProductCard = ({ product }) => {
                         <h3 className='badge badge-outline'>{type.toUpperCase()}</h3>
                     </div>
                     <div className="card-actions gap-7">
-                        <button className="btn btn-primary">Update </button>
-                        <button className="btn btn-primary">Details </button>
+                        <button className="btn btn-primary btn-outline rounded-full">
+                            <Link >
+                                Update
+                            </Link>
+                        </button>
+                        <button className="btn btn-warning btn-outline rounded-full ">
+                            <Link to={`/details/${_id}`}>
+                                Details
+                            </Link>
+                        </button>
                     </div>
                 </div>
             </div>
