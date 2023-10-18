@@ -17,7 +17,7 @@ const Navbar = () => {
     const logo = <div>
         <div className='flex items-center text-3xl '>
             <h1>Z-Tech</h1>
-            <h1><GrTechnology></GrTechnology></h1>
+            <h1 className='text-white'><GrTechnology ></GrTechnology></h1>
         </div>
     </div>
     return (

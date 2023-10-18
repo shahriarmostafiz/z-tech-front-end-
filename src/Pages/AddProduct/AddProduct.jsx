@@ -1,5 +1,8 @@
+import { useState } from "react";
 
 const AddProduct = () => {
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(false)
     const handleAddProduct = e => {
         e.preventDefault()
         const form = e.target
@@ -10,7 +13,19 @@ const AddProduct = () => {
         const price = form.price.value
         const img = form.img.value
         const details = form.details.value
+        if (brand === 'default') {
+            alert('please select a brand')
+            setError(true)
+            return setErrorMessage('please selec a brand')
+        }
+        if (parseFloat(price) < 0) {
+            alert('invalid price ')
+            setError(true)
+            return setErrorMessage('Invalid Price, please check again')
+        }
+        setError(null)
         const product = { name, brand, type, rating, price, img, details }
+        console.log(product);
         fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
@@ -21,6 +36,9 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if (data.acknowledged) {
+                    alert('product added successfully')
+                }
             })
 
     }
@@ -41,7 +59,18 @@ const AddProduct = () => {
                         <div className="flex-1 space-y-3">
                             <label >Brand Name  : </label>
                             <div>
-                                <input type="text" name="brand" placeholder="Brand" className="input input-bordered input-md w-full " required />
+                                <select name="brand" className="select select-bordered w-full " required>
+                                    <option value='default' disabled selected>Choose the brand</option>
+                                    {/* <option disabled value="default" >Choose the brand</option> */}
+                                    <option value='apple'>Apple </option>
+                                    <option value='samsung'>Samsung</option>
+                                    <option value='google'>Google</option>
+                                    <option value='intel'>Intel </option>
+                                    <option value='sony'>Sony </option>
+                                    <option value='asus'>Asus </option>
+                                    {/* <option value= ''></option> */}
+                                </select>
+                                {/* <input type="text" name="brand" placeholder="Brand" className="input input-bordered input-md w-full " required /> */}
                             </div>
                         </div>
                         <div className="flex-1 space-y-3">
@@ -86,9 +115,9 @@ const AddProduct = () => {
                         </div>
                     </div>
                 </div>
+                {error && <p className="text-red-500 text-center my-4">{errorMessage}</p>}
                 <div className=" my-4 text-center">
                     <button type="submit" className="btn btn-success btn-outline rounded-md btn-wide">Add Product </button>
-
                 </div>
             </form>
         </div>
