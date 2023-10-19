@@ -31,7 +31,6 @@ const AuthProvider = ({ children }) => {
     // signOut 
     const logOut = () => {
         return signOut(auth)
-
     }
     const AuthValue = { user, loading, signUp, login, updateData, logOut }
     return (

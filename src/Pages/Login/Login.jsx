@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { ToastContainer, toast } from "react-toastify";
@@ -7,6 +7,9 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Login = () => {
+    const location = useLocation()
+
+    console.log(location.state);
     const { login } = useContext(AuthContext)
     const [showpass, setShowPass] = useState(false)
     const navigate = useNavigate()

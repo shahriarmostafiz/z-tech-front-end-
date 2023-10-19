@@ -9,6 +9,7 @@ import MyCart from '../Pages/MyCart/MyCart';
 import Products from '../Pages/Products/Products';
 import Details from '../Pages/Details/Details';
 import PrivateRoute from './PrivateRoute';
+import UpdateProduct from '../Pages/UpdateProduct/UpdateProduct';
 
 const MainRouter = createBrowserRouter([
     {
@@ -27,7 +28,9 @@ const MainRouter = createBrowserRouter([
         },
         {
             path: "/addProduct",
-            element: <AddProduct></AddProduct>
+            element: <PrivateRoute>
+                <AddProduct></AddProduct>
+            </PrivateRoute>
         }, {
             path: "/myCart",
             element: <PrivateRoute>
@@ -36,11 +39,19 @@ const MainRouter = createBrowserRouter([
         }, {
             path: "/products/:brand",
             element: <Products></Products>,
-            loader: ({ params }) => fetch(`http://localhost:5000/products/${params.brand}`)
+            loader: ({ params }) => fetch(`https://z-tech-server.vercel.app/products/${params.brand}`)
         }, {
             path: "/details/:id",
-            element: <Details></Details>,
-            loader: ({ params }) => fetch(`http://localhost:5000/products/details/${params.id}`)
+            element: <PrivateRoute>
+                <Details></Details>
+            </PrivateRoute>,
+            loader: ({ params }) => fetch(`https://z-tech-server.vercel.app/products/details/${params.id}`)
+        }, {
+            path: "/update/:id",
+            element: <PrivateRoute>
+                <UpdateProduct></UpdateProduct>
+            </PrivateRoute>,
+            loader: ({ params }) => fetch(`https://z-tech-server.vercel.app/products/details/${params.id}`)
         }
         ]
     }

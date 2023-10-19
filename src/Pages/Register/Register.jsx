@@ -53,7 +53,7 @@ const Register = () => {
             .then(res => {
                 console.log(res.user)
                 updateData(name, img)
-                fetch('http://localhost:5000/users', {
+                fetch('https://z-tech-server.vercel.app/users', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"
@@ -65,12 +65,13 @@ const Register = () => {
                         console.log(data)
                         if (data.acknowledged) {
                             toast.success('Registration completed Login to continue', toastInfo)
+                            // navigate("/login")
                         }
                     })
                 logOut()
                     .then()
                     .catch()
-                // navigate('/login')
+                navigate('/login')
 
             })
             .catch(err => {

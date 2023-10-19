@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 
 import './styles.css';
 
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 
 const Products = () => {
     const { brand } = useParams()
@@ -18,7 +18,7 @@ const Products = () => {
     const [sliderData, setsliderData] = useState('')
     // console.log(brandProducts);
     useEffect(() => {
-        fetch(`http://localhost:5000/brands/${brand}`)
+        fetch(`https://z-tech-server.vercel.app/brands/${brand}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
@@ -29,7 +29,20 @@ const Products = () => {
     return (
         <div>
             <div className='lg:max-w-5xl   mx-auto'>
-                <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+                <Swiper
+                    spaceBetween={30}
+                    centeredSlides={true}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    // navigation={true} 
+                    modules={[Autoplay, Pagination, Navigation]}
+                    className="mySwiper"
+                >
                     <SwiperSlide><img src={sliderData?.img1} className='w-full' alt="" /></SwiperSlide>
                     <SwiperSlide><img src={sliderData?.img2} className='w-full' alt="" /></SwiperSlide>
                     <SwiperSlide><img src={sliderData?.img3} className='w-full' alt="" /></SwiperSlide>
@@ -44,7 +57,7 @@ const Products = () => {
                     }
                 </div> :
                     <div className='w-full min-h-[500px] flex justify-center items-center'>
-                        <h1 className='text-4xl font-bold'>Currently No products are available </h1>
+                        <h1 className='text-4xl font-bold'>Currently No Products are Available </h1>
                     </div>}
             </div>
 

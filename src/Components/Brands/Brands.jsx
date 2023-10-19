@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Brands = () => {
     const [brands, setBrands] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:5000/brands')
+        fetch('https://z-tech-server.vercel.app/brands')
             .then(res => res.json())
             .then(data => {
                 setBrands(data)
@@ -18,8 +18,8 @@ const Brands = () => {
                 {
                     brands?.map(brand => <div key={brand._id} className='text-center  w-60'>
                         <Link to={`/products/${brand.brand}`}>
-                            <img src={brand.image} className='w-60 rounded-xl ' alt="" />
-                            <h1 className='text-2xl font-medium'>{brand.brand}</h1>
+                            <img src={brand.image} className='w-60 rounded-full ' alt="" />
+                            <h1 className='text-2xl font-medium '>{brand.brand}</h1>
                         </Link>
                     </div>)
                 }

@@ -12,16 +12,7 @@ const ProductCard = ({ product }) => {
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     }
-    //     {
-    //         Image,
-    //         Name,
-    // Band Name,
-    // type ,
-    //         Price,
-    //         Rating,
-    // Details button,
-    // Update button,
-    //     }
+
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl p-2">
@@ -39,7 +30,7 @@ const ProductCard = ({ product }) => {
                     </div>
                     <div className="card-actions gap-7">
                         <button className="btn btn-primary btn-outline rounded-full">
-                            <Link >
+                            <Link to={`/update/${_id}`}>
                                 Update
                             </Link>
                         </button>

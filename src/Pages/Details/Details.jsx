@@ -3,6 +3,7 @@ import { Rating, Star } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Details = () => {
     const { user } = useContext(AuthContext)
@@ -18,7 +19,7 @@ const Details = () => {
     const cartData = { email, data }
     const handleAddToCart = () => {
         console.log(cartData);
-        fetch(`http://localhost:5000/carts`, {
+        fetch(`https://z-tech-server.vercel.app/carts`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -29,6 +30,9 @@ const Details = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if (data.insertedId) {
+                    toast.success("product added")
+                }
             })
     }
     // console.log(data);

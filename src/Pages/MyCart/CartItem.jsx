@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const CartItem = ({ cartItem, cart, setCart }) => {
     const { _id, email, data } = cartItem
@@ -6,13 +7,14 @@ const CartItem = ({ cartItem, cart, setCart }) => {
     const { name, brand, type, rating, price, img } = data
     const handleCartDelete = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/carts/${id}`, { method: "DELETE" })
+        fetch(`https://z-tech-server.vercel.app/carts/${id}`, { method: "DELETE" })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 if (data.deletedCount) {
                     const remaining = cart.filter(item => item._id !== id)
                     setCart(remaining)
+                    toast.error("product removed from cart")
                 }
             })
     }
