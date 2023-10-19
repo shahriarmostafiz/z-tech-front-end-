@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Laptop",
+    "img": "./laptop.jpg"
+  },
+  {
+    "name": "smartwatch",
+    "img": "./smartwatch.jpg"
+  },
+  {
+    "name": "smartphone",
+    "img": "./phones.jpg"
+  },
+  {
+    "name": "monitor",
+    "img": "./monitors.jpg"
+  }
+]

@@ -10,6 +10,7 @@ import Products from '../Pages/Products/Products';
 import Details from '../Pages/Details/Details';
 import PrivateRoute from './PrivateRoute';
 import UpdateProduct from '../Pages/UpdateProduct/UpdateProduct';
+import CatergoryProduct from '../Pages/CategoryProduct/CatergoryProduct';
 
 const MainRouter = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const MainRouter = createBrowserRouter([
                 <UpdateProduct></UpdateProduct>
             </PrivateRoute>,
             loader: ({ params }) => fetch(`https://z-tech-server.vercel.app/products/details/${params.id}`)
+        }, {
+            path: "/category/:id",
+            element: <CatergoryProduct></CatergoryProduct>,
+            loader: ({ params }) => fetch(`https://z-tech-server.vercel.app/products/categories/${params.id}`)
         }
         ]
     }
