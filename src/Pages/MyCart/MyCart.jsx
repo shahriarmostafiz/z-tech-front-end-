@@ -17,11 +17,22 @@ const MyCart = () => {
     }, [email])
     console.log(cart);
     // console.log(email);
-    return (
-        <div>
-            {cart?.map(cartItem => <CartItem key={cartItem._id} cart={cart} setCart={setCart} cartItem={cartItem}></CartItem>)}
-        </div>
-    );
-};
+    if (!cart?.length) {
+        return (
+            <div className="w-full min-h-[700px] flex justify-center items-center text-3xl font-medium text-red-400">
+                Cart is empty </div>
+        )
+    }
+    else {
+        return (
+
+            <div className=" min-h-[700px]  mt-20">
+                {cart?.map(cartItem => <CartItem key={cartItem._id} cart={cart} setCart={setCart} cartItem={cartItem}></CartItem>)}
+            </div>
+
+
+        );
+    }
+}
 
 export default MyCart;

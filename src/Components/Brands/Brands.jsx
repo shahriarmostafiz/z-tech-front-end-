@@ -13,7 +13,7 @@ const Brands = () => {
     // console.log(brands);
     return (
         <div className='flex flex-col gap-8 items-center justify-center my-8 lg:my-20 '>
-            <h1 className='text-4xl'>Our Partners</h1>
+            <h1 className='text-4xl font-semibold'>Shop by Brands</h1>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
                     brands?.map(brand => <div key={brand._id} className='text-center  w-60'>

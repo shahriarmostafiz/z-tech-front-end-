@@ -37,7 +37,7 @@ const Details = () => {
     }
     // console.log(data);
     return (
-        <div className="flex flex-col justify-center items-center lg:max-w-6xl lg:mx-auto my-6 md:my-8 lg:my-12">
+        <div className="flex p-4 flex-col justify-center items-center lg:max-w-6xl lg:mx-auto my-6 md:my-8 lg:my-12">
             <div className="max-w-3xl flex justify-center">
                 <img src={img} className="w-full" alt="" />
             </div>
@@ -56,7 +56,6 @@ const Details = () => {
                 <button
                     onClick={handleAddToCart}
                     className="btn btn-success btn-outline"> Add to cart </button>
-
             </div>
         </div>
     );

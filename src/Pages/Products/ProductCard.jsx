@@ -29,16 +29,16 @@ const ProductCard = ({ product }) => {
                         <h3 className='badge badge-outline'>{type.toUpperCase()}</h3>
                     </div>
                     <div className="card-actions gap-7">
-                        <button className="btn btn-warning btn-outline rounded-full ">
-                            <Link to={`/update/${_id}`}>
-                                Update
-                            </Link>
-                        </button>
-                        <button className="btn btn-accent btn-outline rounded-full ">
-                            <Link to={`/details/${_id}`}>
-                                Details
-                            </Link>
-                        </button>
+
+                        <Link to={`/update/${_id}`} className="btn btn-warning btn-outline rounded-full ">
+                            Update
+                        </Link>
+
+
+                        <Link to={`/details/${_id}`} className="btn btn-accent btn-outline rounded-full">
+                            Details
+                        </Link>
+
                     </div>
                 </div>
             </div>

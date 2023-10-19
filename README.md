@@ -1,8 +1,14 @@
-# React + Vite
+# Main Features of The project Z-tech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Implementation of MongoDB database
+- Implementation of Express.js server
+- Dark mode/light mode toggle option
+- CRUD Operation
+- Firebase Authentication
 
-Currently, two official plugins are available:
+# live link
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- https://z-tech-6505f.web.app/
+
+<!-- - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh -->
