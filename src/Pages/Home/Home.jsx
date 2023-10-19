@@ -5,7 +5,7 @@ import Featured from "../../Components/Featured Products/Featured";
 
 const Home = () => {
     return (
-        <div className="space-y-8">
+        <div >
             <Banner></Banner>
             <Categories></Categories>
             <Featured></Featured>

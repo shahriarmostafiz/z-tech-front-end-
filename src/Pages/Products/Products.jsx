@@ -27,7 +27,7 @@ const Products = () => {
     }, [brand])
     console.log(sliderData);
     return (
-        <div>
+        <div className='my-6 md:my-8 lg:my-12'>
             <div className='lg:max-w-5xl   mx-auto'>
                 <Swiper
                     spaceBetween={30}
@@ -48,8 +48,8 @@ const Products = () => {
                     <SwiperSlide><img src={sliderData?.img3} className='w-full' alt="" /></SwiperSlide>
                 </Swiper>
             </div>
-            <div className='flex justify-center'>
-                {brandProducts.length ? <div className='grid md:grid-cols-2 gap-5 '>
+            <div className='flex justify-center mt-4 md:mt-8 lg:mt-12'>
+                {brandProducts.length ? <div className='grid md:grid-cols-2 gap-6 '>
 
                     {
                         brandProducts?.map(product => <ProductCard key={product._id} product={product}></ProductCard>)

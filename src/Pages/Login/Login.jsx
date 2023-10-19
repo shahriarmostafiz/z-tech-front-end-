@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { FcGoogle } from 'react-icons/fc'
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -10,7 +11,7 @@ const Login = () => {
     const location = useLocation()
 
     console.log(location.state);
-    const { login } = useContext(AuthContext)
+    const { login, googleLogin } = useContext(AuthContext)
     const [showpass, setShowPass] = useState(false)
     const navigate = useNavigate()
     const toastInfo = {
@@ -41,6 +42,18 @@ const Login = () => {
                 return toast.error('password or email does not match', toastInfo)
             })
     }
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(() => {
+                toast.success('logged in ', toastInfo)
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(err => {
+                console.log(err)
+                return toast.error(err.message, toastInfo)
+            })
+
+    }
     return (
         <div>
             <div className="flex w-full flex-col justify-center min-h-[600px] items-center ">
@@ -63,6 +76,12 @@ const Login = () => {
                         </div>
                         <p className="text-center">Dont have an account? <Link className="text-rose-500 font-semibold" to={'/signup'}>Register here </Link></p>
                     </form>
+                </div>
+                <div className="flex flex-col gap-4 mt-6 justify-center items-center">
+                    <div className="flex items-center gap-1">
+                        <div className="border bg-slate-500 h-0.5 w-32"></div> <p>OR</p> <div className="border h-0.5 w-32 bg-slate-500"></div>
+                    </div>
+                    <button className="btn btn-wide rounded-full btn-outline btn-accent " onClick={handleGoogleLogin}> <FcGoogle />Login  </button>
                 </div>
             </div>
             <ToastContainer></ToastContainer>
