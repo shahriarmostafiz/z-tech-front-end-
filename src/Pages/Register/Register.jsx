@@ -3,8 +3,9 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import { FcGoogle } from 'react-icons/fc'
 const Register = () => {
-    const { signUp, updateData, logOut } = useContext(AuthContext)
+    const { signUp, updateData, logOut, googleLogin } = useContext(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
     const toastInfo = {
@@ -78,12 +79,25 @@ const Register = () => {
                 console.log(err)
                 return toast(error.message, toastInfo)
             })
+
+    }
+    const loginWithGoogle = () => {
+        googleLogin()
+            .then(() => {
+                toast.success('Signed Up ', toastInfo)
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(err => {
+                console.log(err)
+                return toast.error(err.message, toastInfo)
+            })
+
     }
     return (
         <div className="p-4">
-            <h1 className="text-4xl text-center font-semibold my-7">Sign Up today</h1>
+            <h1 className="text-4xl text-center font-semibold mt-7 mb-2">Sign Up today</h1>
             <div className="max-w-3xl md:mx-auto ">
-                <form className="card-body" onSubmit={handdleSignUp}>
+                <form className="card-body p-1" onSubmit={handdleSignUp}>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name </span>
@@ -114,6 +128,12 @@ const Register = () => {
                     </div>
 
                 </form>
+            </div>
+            <div className="flex flex-col gap-4  justify-center items-center">
+                <div className="flex items-center gap-1">
+                    <div className="border bg-slate-500 h-0.5 w-32"></div> <p>OR</p> <div className="border h-0.5 w-32 bg-slate-500"></div>
+                </div>
+                <button className="btn rounded-full btn-outline btn-error btn-wide " onClick={loginWithGoogle}> <FcGoogle />Sign up with Google </button>
             </div>
             <ToastContainer />
 

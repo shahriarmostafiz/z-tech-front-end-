@@ -1,27 +1,8 @@
-import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 
 const Categories = () => {
-    // const [categories, setCategories] = useState(null)
 
-    // const navigate = useNavigate()
-    // useEffect(() => {
-    //     fetch('/categories.json')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             setCategories(data)
-    //         })
-    // }, [])
-
-    // useEffect(() => {
-    //     fetch('/categories.json')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setCategories(data)
-    //         }), []
-    // } )
-    // console.log(categories);
     return (
         <div className="my-6 md:my-8 lg:my-12">
             <h1 className="text-center text-3xl lg:text-5xl font-medium">Shop by Categories </h1>

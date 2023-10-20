@@ -3,7 +3,7 @@ import ProductCard from "../Products/ProductCard";
 
 const CatergoryProduct = () => {
     const categoryData = useLoaderData()
-    console.log("category data is ", categoryData);
+    // console.log("category data is ", categoryData);
     return (
         <div className="my-6 md:my-8 lg:my-12">
             <h1 className="text-3xl text-center"> Available  {categoryData[0].type}s </h1>

@@ -30,7 +30,7 @@ const Navbar = () => {
         }
     }
     const handleLogOut = () => {
-        // console.log('logging out soon');
+
         logOut()
             .then(() => {
                 return toast.error('logged out', toastInfo)

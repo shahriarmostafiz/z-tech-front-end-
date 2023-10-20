@@ -18,7 +18,7 @@ const Details = () => {
     }
     const cartData = { email, data }
     const handleAddToCart = () => {
-        console.log(cartData);
+        // console.log(cartData);
         fetch(`https://z-tech-server.vercel.app/carts`, {
             method: "POST",
             headers: {

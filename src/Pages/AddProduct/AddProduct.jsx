@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
     const [error, setError] = useState(false)
@@ -25,7 +26,7 @@ const AddProduct = () => {
         }
         setError(null)
         const product = { name, brand, type, rating, price, img, details }
-        console.log(product);
+        // console.log(product);
         fetch('https://z-tech-server.vercel.app/products', {
             method: 'POST',
             headers: {
@@ -37,7 +38,8 @@ const AddProduct = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert('product added successfully')
+                    // alert('product added successfully')
+                    toast.success("product added")
                 }
             })
 
