@@ -6,6 +6,7 @@
 - CRUD Operation
 - Firebase Authentication
 
-# live link
+# Links
 
-- https://z-tech-6505f.web.app/
+- [Live Link](https://z-tech-6505f.web.app/)
+- [Server](https://github.com/shahriarmostafiz/z-tech-back-end-with-express.js-)
